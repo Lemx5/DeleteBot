@@ -49,7 +49,7 @@ async def clear_chat(client, message):
 
     # Delete messages using the direct delete method
     count = 0
-    async for msg in app.iter_history(chat_id):
+    async for msg in bot.iter_history(chat_id):
         try:
             await msg.delete()
             print(f"Deleted message {msg.message_id}")
