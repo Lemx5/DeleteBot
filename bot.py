@@ -28,7 +28,7 @@ def index():
 async def is_user_admin(chat_id, user_id):
     # Check if a user is an admin or owner in a specific chat
     chat_member = await bot.get_chat_member(chat_id, user_id)
-    return chat_member.status in [enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.CREATOR]
+    return chat_member.status in [enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER]
 
 @bot.on_message(filters.command("start") & filters.private)
 async def start(client, message):
