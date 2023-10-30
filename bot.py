@@ -8,14 +8,14 @@ from pyrogram.errors import FloodWait
 # Environment variables for Pyrogram
 API_ID = os.environ.get("API_ID")
 API_HASH = os.environ.get("API_HASH")
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+SESSION = os.environ.get("SESSION")
 
 # Pyrogram setup
 bot = Client(
-    "my_bot",
+    "deleteallmsg",
+    session_string=SESSION,
     api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN
+    api_hash=API_HASH
 )
 
 # Flask setup
