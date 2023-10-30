@@ -1,2 +1,2 @@
 # DeleteBot
-A Telegram Bot, Can Delete All Chat History From groups
+A Telegram UserBot, Can Delete All Chat History From groups
