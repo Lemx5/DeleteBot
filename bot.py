@@ -30,7 +30,7 @@ async def is_user_admin(chat_id, user_id):
     chat_member = await app.get_chat_member(chat_id, user_id)
     return chat_member.status in [enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.CREATOR]
 
-@bot.on_message(filters.command("start"), filters.private)
+@bot.on_message(filters.command("start") & filters.private)
 async def start(client, message):
     await message.reply("Hello! I'm simple ClearChatBot. Use /clearchat in a group to delete all messages!")
 
