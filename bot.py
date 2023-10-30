@@ -44,17 +44,25 @@ async def clear_chat(client, message):
     if not await is_user_admin(chat_id, user_id):
         await message.reply("You must be an admin to use this command!")
         return
-    
+
+    m = await message.reply("Starting to delete messages...")
+
     # Delete messages using the direct delete method
+    count = 0
     async for msg in app.iter_history(chat_id):
         try:
             await msg.delete()
             print(f"Deleted message {msg.message_id}")
+            count += 1
+            
+            # Update the user for every 100 messages deleted
+            if count % 100 == 0:
+                await m.edit(f"Deleted {count} messages so far...")
         except FloodWait as e:
             print(f"Rate limit exceeded. Sleeping for {e.x} seconds.")
             await asyncio.sleep(e.x)
 
-    await message.reply(f"Deleted messages from {message.chat.title}!")
+    await m.edit(f"Deleted a total of {count} messages from {message.chat.title}!")
 
 
 def run():
