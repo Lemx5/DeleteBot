@@ -7,9 +7,9 @@ from flask import Flask
 
 
 # Env vars
-API_ID = os.getenv("API_ID") # Telegram API_ID , get it from my.telegram.org
-API_HASH = os.getenv("API_HASH") # Telegram API_HASH , get it from my.telegram.org
-STRING = os.getenv("STRING") # Pyrogram session string
+API_ID = os.environ.get("API_ID") # Telegram API_ID , get it from my.telegram.org
+API_HASH = os.environ.get("API_HASH") # Telegram API_HASH , get it from my.telegram.org
+STRING = os.environ.get("STRING") # Pyrogram session string
 
 # Bot
 app = Client(
@@ -31,6 +31,11 @@ def home():
 @app.on_message(filters.me & filters.command("clearchat", prefixes="."))
 async def clearchat(_, message):
     chat_id = message.chat.id
+
+    # send msg to show that bot is working
+    await message.edit("Deleting all messages...")
+    await asyncio.sleep(2)
+
     # get all messages
     async for msg in app.get_chat_history(chat_id):
         try:
