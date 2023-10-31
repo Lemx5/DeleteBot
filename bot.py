@@ -9,7 +9,7 @@ from flask import Flask
 # Env vars
 API_ID = os.environ.get("API_ID") # Telegram API_ID , Get it from my.telegram.org
 API_HASH = os.environ.get("API_HASH") # Telegram API_HASH , Get it from my.telegram.org
-STRING = os.environ.get("STRING") # Pyrogram session string
+STRING = os.environ.get("SESSION_STRING") # Pyrogram session string
 
 # Bot
 app = Client(
